@@ -11,7 +11,7 @@ from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
 
 # conectando no banco de dados
-client = MongoClient('mongodb+srv://jonatahs18:FkodOXfGl6xGLmku@cluster0.zwytslc.mongodb.net/')
+client = MongoClient('mongodb+srv://ACCOUNT:PASSWORD@cluster0.zwytslc.mongodb.net/')
 
 try:
     client.admin.command('ping')
