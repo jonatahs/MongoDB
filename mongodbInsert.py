@@ -34,3 +34,38 @@ myDocment = {
 result = client['CRUD']['CRUD'].insert_one(myDocment)
 #imprimindo o ID
 print(f'Insercai feita com sucesso ID: {result.inserted_id}' )
+
+# Realizando INSERT MANY
+
+myManyDoc = [
+    {
+    'account_id': 11111,
+    'limit': 14000,
+    'products': [
+                 "Many",
+                 "Brokerage"
+                 ],
+                 "last_updated": '2023-05-14'},
+    {
+    'account_id': 222222,
+    'limit': 14000,
+    'products': [
+                 "Many 2",
+                 "Brokerage"
+                 ],
+                 "last_updated": '2023-05-14'},
+    {
+    'account_id': 333333,
+    'limit': 14000,
+    'products': [
+                 "Many 3",
+                 "Brokerage"
+                 ],
+                 "last_updated": '2023-05-14'}
+                 ]
+
+# realizando insert
+
+result = client['CRUD']['CRUD'].insert_many(myManyDoc)
+#imprimindo o ID
+print(f'Insercao feita com sucesso ID: {result.inserted_ids}')
