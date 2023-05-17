@@ -37,3 +37,47 @@ print("----------------------------- FILTRANDO FIND ----------------------------
 findFilter = client['CRUD']['CRUD'].find({},{'account_id': 794876})
 
 print(findFilter)
+
+"""
+Operadores Logicos MongoDB
+$gt (maior que)
+$gte(maior igual)
+$lt (menos que )
+$lte (menos ou igual)
+
+<campo>: {<operador> : <valor>}
+
+Exemplos:
+    $gt:
+        db.sales.find({ "items.price": { $gt: 50}})
+    $lt:
+        db.sales.find({ "items.price": { $lt: 50}})
+    $lte:
+        db.sales.find({ "customer.age": { $lte: 65}})
+    $gte:
+        db.sales.find({ "customer.age": { $gte: 65}})
+
+        
+======================================================
+
+Realizando Querys em Arrays nos documentos no Mongo DB
+
+Para acharmos valores em um objeto que tem array devemos usar o $elemMatch
+
+Exemplos: 
+
+db.account.find({
+    products: {
+        $elemMatch: {$eq: 'InvestmentStock'}
+    }
+})
+
+
+db.sales.find({
+  items: {
+    $elemMatch: { name: "laptop", price: { $gt: 800 }, quantity: { $gte: 1 } },
+  },
+})
+
+
+"""
