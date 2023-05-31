@@ -44,8 +44,10 @@ $gt (maior que)
 $gte(maior igual)
 $lt (menos que )
 $lte (menos ou igual)
+$and
+$or
 
-<campo>: {<operador> : <valor>}
+
 
 Exemplos:
     $gt:
@@ -56,6 +58,12 @@ Exemplos:
         db.sales.find({ "customer.age": { $lte: 65}})
     $gte:
         db.sales.find({ "customer.age": { $gte: 65}})
+    
+    $or:
+        db.routes.find({
+            $or: [{ dst_airport: "SEA" }, { src_airport: "SEA" }],
+            })
+
 
         
 ======================================================
@@ -79,5 +87,11 @@ db.sales.find({
   },
 })
 
+db.transactions.find({
+    transactions: {
+      $elemMatch: { amount: { $lte: 4500 }, transaction_code: "sell" },
+    },
+  })
 
 """
+
