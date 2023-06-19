@@ -1,13 +1,8 @@
-"""
-Para realizar o Read no MongoDB usamos o find(), utilizamos no seguinte formato : db.<collection>.find()
-
-"""
-
 from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
 
 # conectando no banco de dados
-client = MongoClient('mongodb+srv://ACCOUNT:PASSWORD@cluster0.zwytslc.mongodb.net/')
+client = MongoClient('mongodb+srv://jonatahs18:FkodOXfGl6xGLmku@cluster0.zwytslc.mongodb.net/')
 
 try:
     print("\n")
@@ -18,80 +13,33 @@ except Exception as e:
     print(e)
 
 
-# Realizando find de um objeto
-
-result = client['CRUD']['CRUD'].find_one()
-print("\n")
-print("----------------------------- FIND DE UM OBJETO -----------------------------")
-print("\n")
-print(result)
-
-print("\n")
-print("----------------------------- FIND DE TODO OS OBJETOS -----------------------------")
-print("\n")
-for i in client['CRUD']['CRUD'].find():
-    print(i)
-
-print("----------------------------- FILTRANDO FIND -----------------------------")
-
-findFilter = client['CRUD']['CRUD'].find({},{'account_id': 794876})
-
-print(findFilter)
-
 """
-Operadores Logicos MongoDB
-$gt (maior que)
-$gte(maior igual)
-$lt (menos que )
-$lte (menos ou igual)
-$and
-$or
+To replace documents in MongoDB, we use the replaceOne() method. The replaceOne() method takes the following parameters:
 
+db.collection.replaceOne(filter,replacement,options)
 
+filter: A query that matches the document to replace.
+replacement: The new document to replace the old one with.
+options: An object that specifies options for the update.
 
-Exemplos:
-    $gt:
-        db.sales.find({ "items.price": { $gt: 50}})
-    $lt:
-        db.sales.find({ "items.price": { $lt: 50}})
-    $lte:
-        db.sales.find({ "customer.age": { $lte: 65}})
-    $gte:
-        db.sales.find({ "customer.age": { $gte: 65}})
-    
-    $or:
-        db.routes.find({
-            $or: [{ dst_airport: "SEA" }, { src_airport: "SEA" }],
-            })
+Ex.: 
 
-
-        
-======================================================
-
-Realizando Querys em Arrays nos documentos no Mongo DB
-
-Para acharmos valores em um objeto que tem array devemos usar o $elemMatch
-
-Exemplos: 
-
-db.account.find({
-    products: {
-        $elemMatch: {$eq: 'InvestmentStock'}
-    }
-})
-
-
-db.sales.find({
-  items: {
-    $elemMatch: { name: "laptop", price: { $gt: 800 }, quantity: { $gte: 1 } },
+db.books.replaceOne(
+  {
+    _id: ObjectId("6282afeb441a74a98dbbec4e"),
   },
-})
-
-db.transactions.find({
-    transactions: {
-      $elemMatch: { amount: { $lte: 4500 }, transaction_code: "sell" },
-    },
-  })
+  {
+    title: "Data Science Fundamentals for Python and MongoDB",
+    isbn: "1484235967",
+    publishedDate: new Date("2018-5-10"),
+    thumbnailUrl:
+      "https://m.media-amazon.com/images/I/71opmUBc2wL._AC_UY218_.jpg",
+    authors: ["David Paper"],
+    categories: ["Data Science"],
+  }
+)
 
 """
+
+
 
