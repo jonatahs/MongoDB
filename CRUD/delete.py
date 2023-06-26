@@ -9,7 +9,7 @@ from pymongo.mongo_client import MongoClient
 from bson.objectid import ObjectId
 
 # conectando no banco de dados
-client = MongoClient('mongodb+srv://jonatahs18:FkodOXfGl6xGLmku@cluster0.zwytslc.mongodb.net/')
+client = MongoClient('')
 
 try:
     print("\n")
